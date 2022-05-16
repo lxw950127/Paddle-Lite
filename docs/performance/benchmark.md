@@ -22,46 +22,18 @@
         * [ResNet50_quant](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/mobile/ResNet50_quant.tar.gz)
         * [SSD_MobileNetV3_large_quant](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/mobile/SSD_MobileNetV3_large_quant.tar.gz)
         * [HRNet_w18_quant](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/mobile/HRNet_18_voc_quant.tar.gz)
+    
+    * fp32 稀疏化模型
+        * [MobileNet](http://10.127.28.26:8879/bridge/sparse.tar)
+        * [humanseg](http://10.127.28.26:8879/projects_sparse/humanseg.tar)
+        * [picodet](http://10.127.28.26:8879/bridge/picodet_m_320_coco_75.tar)
 
 * 测试机器
-   *  骁龙 865
-      * Xiaomi MI10, Snapdragon 865 (enable sdot instruction)
-      * CPU: 1xA77 @2.84GHz + 3xA77 @2.42GHz + 4xA55 @1.8GHz
-      * GPU: Adreno 650
-
-   *  骁龙 855
-      * Xiaomi MI9, Snapdragon 855 (enable sdot instruction)
-      * CPU: 1xA76 @2.84GHz + 3xA76 @2.42GHz + 4xA55 @1.78GHz
-      * GPU: Adreno 640
-
-   *  骁龙 845
-      * Xiaomi MI8, Snapdragon 845
-      * CPU: 4xA75 @2.8GHz + 4xA75 @1.7GHz
-      * GPU: Adreno 630
-
-   *  骁龙 835
-      * Xiaomi mi6, Snapdragon 835
-      * CPU: 4xA73 @2.45GHz + 4xA53 @1.9GHz
-      * GPU: Adreno 540
-
-   *  骁龙 625
-      * Xiaomi Redmi6 Pro, Snapdragon 625
-      * CPU: 4xA53 @1.8GHz + 4xA53 @1.6GHz
-      * GPU: Adreno 506
-
-   *  麒麟 990
-      * Huawei Mate 30, Kirin 990
-      * CPU: 2xA76 @2.86GHz + 2xA76 @2.09GHz + 4xA55 @1.86GHz
-      * GPU: 16 core Mali-G76
-
-   *  麒麟 980
-      * Huawei Mate 20, Kirin 980
-      * CPU: 2xA76 @2.6GHz + 2xA76 @1.92Ghz + 4xA55 @1.8Ghz
-      * GPU: 10 core Mali-G76
-
-   *  RK3399
-      * CPU: 2xA72 @1.8GHz + 4xA53 @1.4Ghz
-      * GPU: 4 core Mali-T860
+   ||骁龙 865|骁龙 855|骁龙 845|骁龙 835|骁龙 625|麒麟 990|麒麟 980|RK3399|
+   |:----|----:|----:|----:|----:|----:|----:|----:|----:|
+   |设备|Xiaomi MI10 |Xiaomi MI9 |Xiaomi MI8 |Xiaomi mi6 |Xiaomi Redmi6 Pro |Huawei Mate 30 |Huawei Mate 20 |瑞芯微RK3399开发板 |
+   |CPU|1xA77 @2.84GHz + 3xA77 @2.42GHz + 4xA55 @1.8GHz |1xA76 @2.84GHz + 3xA76 @2.42GHz + 4xA55 @1.78GHz |4xA75 @2.8GHz + 4xA75 @1.7GHz |4xA73 @2.45GHz + 4xA53 @1.9GHz |4xA53 @1.8GHz + 4xA53 @1.6GHz |2xA76 @2.86GHz + 2xA76 @2.09GHz + 4xA55 @1.86GHz |2xA76 @2.6GHz + 2xA76 @1.92Ghz + 4xA55 @1.8Ghz |2xA72 @1.8GHz + 4xA53 @1.4Ghz | 
+   |GPU|Adreno 650 |Adreno 640 |Adreno 630 |Adreno 540 |Adreno 506 |16 core Mali-G76 |10 core Mali-G76 |4 core Mali-T860 | 
 
 * 测试说明
     * Branch: release/v2.10, commit id: b2e9776
@@ -86,6 +58,18 @@
 |ResNet50|162.40 |192.88 |430.72 |490.54 |842.96 |221.81 |191.14 |638.29 |
 |SSD_MobileNetV3_large|33.87 |42.84 |84.70 |103.32 |199.60 |46.02 |40.95 |157.08 |
 |HRNet_w18|640.62 |835.62 |1687.78 |2048.81 |4724.20 |910.09 |820.42 |3380.08 |
+|humanseg|23.10 |24.69 |50.54 |65.09 |317.87 |31.76 |41.67 |110.08 |
+|picodet|41.32 |42.48 |101.18 |121.82 |431.46 |56.40 |73.70 |185.36 |
+
+运行时精度为 fp32 稀疏模型的性能数据如下：
+
+|模型|骁龙 865|骁龙 855|麒麟 990|麒麟 980|
+|:----|----:|----:|----:|----:|
+|MobileNetV1|17.04 |19.06 |23.23 |32.21 |
+|MobileNetV2|11.73 |13.74 |17.09 |22.88 |
+|MobileNetV3|9.61 |11.16 |13.37 |18.08 |
+|humanseg|17.04 |20.05 |24.19 |32.31 |
+|picodet|25.79 |27.68 |33.86 |47.08 |
 
 
 运行时精度为 fp16 的性能数据如下：
